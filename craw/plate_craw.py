@@ -52,10 +52,13 @@ def test():
 
 def all_stock():
     data = ts.get_stock_basics()
-    for d in data.index:
-        #print d, data.loc[d]
-        sql = "insert into stock(id, name) VALUE (%s, %s)"
-        execute_sql(sql, [d, data.loc[d]['name']])
+    data.to_csv("stock.csv")
+    # for d in data.index:
+    #     #print d, data.loc[d]
+    #     sql = "insert into stock(id, name) VALUE (%s, %s)"
+    #     execute_sql(sql, [d, data.loc[d]['name']])
+
+# all_stock()
 
 
 def stock():
@@ -106,10 +109,12 @@ def merage_test():
     _data = [[1, 2, 3], [4, 5, 3], [7, 8, 9]]
     data1 = pd.DataFrame(data=_data, columns=['a', 'b', 'c'])
 
+    # data1.where(data1> 1)
     _data2 = [[1, 2, 3], [6, 5, 3], [8, 8, 9]]
     data12 = pd.DataFrame(data=_data2, columns=['a', 'f', 'g'])
 
     s = pd.merge(left=data1, right=data12, on='a')
+
 
     print s
 
@@ -126,7 +131,7 @@ def concept_today():
 
     print s
 
-concept_today()
+# concept_today()
 
 
 # merage_test()
